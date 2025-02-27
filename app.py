@@ -160,10 +160,10 @@ def create_event():
         </html>
     ''')
 
-@app.route('/event/<int:event_id>', methods=['GET', 'POST'])
+@app.route('/event/<event_id>', methods=['GET', 'POST'])
 def view_event(event_id):
     """Seite zur Anzeige eines Events mit den Terminvorschlägen und zur Abstimmung."""
-    event = events.get(event_id)
+    event = events.get(event_id)  # event_id als String verwenden
     if event is None:
         return "Event nicht gefunden", 404
     
