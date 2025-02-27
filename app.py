@@ -1,10 +1,24 @@
 from flask import Flask, render_template_string, request, redirect, url_for
+import json
+import os
 
 app = Flask(__name__)
 
 # In-Memory-Speicher für Events
 events = {}
 event_counter = 1
+data_file = 'data.json'
+
+def load_events():
+    global events, event_counter
+    if os.path.exists(data_file):
+        with open(data_file, 'r') as f:
+            events = json.load(f)
+            event_counter = max(events.keys()) + 1 if events else 1
+
+def save_events():
+    with open(data_file, 'w') as f:
+        json.dump(events, f)
 
 @app.route('/')
 def index():
@@ -85,6 +99,7 @@ def create_event():
             'votes': {option: 0 for option in option_list}
         }
         events[event_counter] = event
+        save_events()  # Speichere die Events in der JSON-Datei
         event_counter += 1
         return redirect(url_for('view_event', event_id=event['id']))
     
@@ -155,6 +170,7 @@ def view_event(event_id):
         selected_option = request.form.get('option')
         if selected_option in event['votes']:
             event['votes'][selected_option] += 1
+        save_events()  # Speichere die aktualisierten Stimmen in der JSON-Datei
         return redirect(url_for('view_event', event_id=event_id))
     
     return render_template_string('''
@@ -224,4 +240,5 @@ def view_event(event_id):
     ''', event=event)
 
 if __name__ == '__main__':
+    load_events()  # Lade die Events beim Start der Anwendung
     app.run(debug=True)
