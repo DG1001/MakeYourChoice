@@ -47,11 +47,18 @@ def index():
                 a:hover {
                     text-decoration: underline;
                 }
+                .container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #ffffff;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                }
                 ul {
                     list-style-type: none;
                     padding: 0;
-                    max-width: 600px;
-                    margin: 0 auto;
                 }
                 li {
                     margin: 10px 0;
@@ -82,15 +89,17 @@ def index():
             </style>
         </head>
         <body>
-            <h1>Doodle Clone</h1>
-            <p><a class="button" href="{{ url_for('create_event') }}">Neues Event erstellen</a></p>
-            <ul>
-                {% for event_id, event in events.items() %}
-                    <li>
-                        <a href="{{ url_for('view_event', event_id=event_id) }}">{{ event['name'] }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <div class="container">
+                <h1>Doodle Clone</h1>
+                <p><a class="button" href="{{ url_for('create_event') }}">Neues Event erstellen</a></p>
+                <ul>
+                    {% for event_id, event in events.items() %}
+                        <li>
+                            <a href="{{ url_for('view_event', event_id=event_id) }}">{{ event['name'] }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </body>
         </html>
     ''', events=events)
@@ -136,6 +145,15 @@ def create_event():
                     color: #007aff;
                     text-align: center;
                 }
+                .container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    background-color: #ffffff;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                }
                 .button {
                     display: inline-block;
                     background-color: #007aff;
@@ -154,10 +172,6 @@ def create_event():
                 form {
                     max-width: 600px;
                     margin: 0 auto;
-                    background-color: #ffffff;
-                    padding: 20px;
-                    border: 1px solid #ddd;
-                    border-radius: 5px;
                 }
                 label {
                     display: block;
@@ -173,15 +187,17 @@ def create_event():
             </style>
         </head>
         <body>
-            <h1>Neues Event erstellen</h1>
-            <form method="post">
-                <label>Eventname:</label>
-                <input type="text" name="name" required>
-                <label>Termine (durch Komma getrennt):</label>
-                <input type="text" name="options" placeholder="z.B. 2025-03-01, 2025-03-05, 2025-03-10" required>
-                <input class="button" type="submit" value="Erstellen">
-            </form>
-            <p><a class="button" href="{{ url_for('index') }}">Zurück</a></p>
+            <div class="container">
+                <h1>Neues Event erstellen</h1>
+                <form method="post">
+                    <label>Eventname:</label>
+                    <input type="text" name="name" required>
+                    <label>Termine (durch Komma getrennt):</label>
+                    <input type="text" name="options" placeholder="z.B. 2025-03-01, 2025-03-05, 2025-03-10" required>
+                    <input class="button" type="submit" value="Erstellen">
+                </form>
+                <p><a class="button" href="{{ url_for('index') }}">Zurück</a></p>
+            </div>
         </body>
         </html>
     ''')
@@ -219,6 +235,15 @@ def view_event(event_id):
                 h2 {
                     color: #333;
                 }
+                .container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    background-color: #ffffff;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                }
                 .button {
                     display: inline-block;
                     background-color: #007aff;
@@ -237,8 +262,6 @@ def view_event(event_id):
                 ul {
                     list-style-type: none;
                     padding: 0;
-                    max-width: 600px;
-                    margin: 0 auto;
                 }
                 li {
                     margin: 10px 0;
@@ -252,24 +275,26 @@ def view_event(event_id):
             </style>
         </head>
         <body>
-            <h1>{{ event.name }}</h1>
-            <h2>Termine und Stimmen</h2>
-            <ul>
-                {% for option, count in event.votes.items() %}
-                    <li>{{ option }}: {{ count }} Stimme(n)</li>
-                {% endfor %}
-            </ul>
-            <h2>Abstimmen</h2>
-            <form method="post">
-                <label>Wählen Sie einen Termin:</label>
-                <select name="option">
-                    {% for option in event.options %}
-                        <option value="{{ option }}">{{ option }}</option>
+            <div class="container">
+                <h1>{{ event.name }}</h1>
+                <h2>Termine und Stimmen</h2>
+                <ul>
+                    {% for option, count in event.votes.items() %}
+                        <li>{{ option }}: {{ count }} Stimme(n)</li>
                     {% endfor %}
-                </select>
-                <input class="button" type="submit" value="Abstimmen">
-            </form>
-            <p><a class="button" href="{{ url_for('index') }}">Zurück zur Übersicht</a></p>
+                </ul>
+                <h2>Abstimmen</h2>
+                <form method="post">
+                    <label>Wählen Sie einen Termin:</label>
+                    <select name="option">
+                        {% for option in event.options %}
+                            <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                    <input class="button" type="submit" value="Abstimmen">
+                </form>
+                <p><a class="button" href="{{ url_for('index') }}">Zurück zur Übersicht</a></p>
+            </div>
         </body>
         </html>
     ''', event=event)
