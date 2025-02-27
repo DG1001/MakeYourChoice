@@ -9,13 +9,20 @@ events = {}
 event_counter = 1
 data_file = 'data.json'
 
+
 def load_events():
     global events, event_counter
     if os.path.exists(data_file):
         with open(data_file, 'r') as f:
-            events = json.load(f)
+            data = json.load(f)
             # Umwandlung der Schlüssel in Ganzzahlen
-            event_counter = max(map(int, events.keys())) + 1 if events else 1
+            events = {}
+            for key, value in data.items():
+                # Option 1: Verwende Integer-Schlüssel
+                events[int(key)] = value
+                # Oder Option 2: Behalte String-Schlüssel
+                # events[key] = value
+            event_counter = max(map(int, data.keys())) + 1 if data else 1
 
 def save_events():
     with open(data_file, 'w') as f:
@@ -219,7 +226,8 @@ def create_event():
 @app.route('/event/<event_id>', methods=['GET', 'POST'])
 def view_event(event_id):
     """Seite zur Anzeige eines Events mit den Terminvorschlägen und zur Abstimmung."""
-    event = events.get(event_id)  # event_id als String verwenden
+    # Konvertiere event_id zu Integer
+    event = events.get(int(event_id))
     if event is None:
         return "Event nicht gefunden", 404
     
