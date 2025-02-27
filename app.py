@@ -35,6 +35,7 @@ def index():
         <html>
         <head>
             <title>Make Your Choice</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
                 body {
                     font-family: 'Arial', sans-serif;
@@ -154,6 +155,7 @@ def create_event():
         <html>
         <head>
             <title>Neues Event erstellen</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
                 body {
                     font-family: 'Arial', sans-serif;
@@ -242,6 +244,7 @@ def view_event(event_id):
         <html>
         <head>
             <title>{{ event.name }}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
                 body {
                     font-family: 'Arial', sans-serif;
