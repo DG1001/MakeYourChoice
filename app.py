@@ -34,7 +34,7 @@ def index():
     return render_template_string('''
         <html>
         <head>
-            <title>Doodle Clone</title>
+            <title>Make Your Choice</title>
             <style>
                 body {
                     font-family: 'Arial', sans-serif;
@@ -111,7 +111,7 @@ def index():
         </head>
         <body>
             <div class="container">
-                <h1>Doodle Clone</h1>
+                <h1>Make Your Choice</h1>
                 <p><a class="button" href="{{ url_for('create_event') }}">Neues Event erstellen</a></p>
                 <ul>
                     {% for event_id, event in events.items() %}

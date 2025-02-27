@@ -1,6 +1,6 @@
-# Doodle Clone
+# Make Your Choice
 
-This is a simple web application that mimics the functionality of Doodle, allowing users to create events and vote on available options (dates). The application is built using Flask, a lightweight web framework for Python.
+This is a simple web application that mimics the functionality of a polling tool, allowing users to create events and vote on available options (dates). The application is built using Flask, a lightweight web framework for Python.
 
 ## Features
 
