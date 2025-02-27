@@ -331,4 +331,4 @@ def view_event(event_id):
 
 if __name__ == '__main__':
     load_events()  # Lade die Events beim Start der Anwendung
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
