@@ -86,6 +86,20 @@ def index():
                 .button:hover {
                     background-color: #0051a8;
                 }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                }
+                th, td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: center;
+                }
+                th {
+                    background-color: #007aff;
+                    color: white;
+                }
             </style>
         </head>
         <body>
@@ -259,18 +273,19 @@ def view_event(event_id):
                 .button:hover {
                     background-color: #0051a8;
                 }
-                ul {
-                    list-style-type: none;
-                    padding: 0;
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
                 }
-                li {
-                    margin: 10px 0;
+                th, td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: center;
                 }
-                select {
-                    padding: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                    margin-bottom: 10px;
+                th {
+                    background-color: #007aff;
+                    color: white;
                 }
             </style>
         </head>
@@ -278,11 +293,18 @@ def view_event(event_id):
             <div class="container">
                 <h1>{{ event.name }}</h1>
                 <h2>Termine und Stimmen</h2>
-                <ul>
+                <table>
+                    <tr>
+                        <th>Termin</th>
+                        <th>Stimmen</th>
+                    </tr>
                     {% for option, count in event.votes.items() %}
-                        <li>{{ option }}: {{ count }} Stimme(n)</li>
+                        <tr>
+                            <td>{{ option }}</td>
+                            <td>{{ count }}</td>
+                        </tr>
                     {% endfor %}
-                </ul>
+                </table>
                 <h2>Abstimmen</h2>
                 <form method="post">
                     <label>Wählen Sie einen Termin:</label>
