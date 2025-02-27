@@ -30,14 +30,15 @@ def index():
             <title>Doodle Clone</title>
             <style>
                 body {
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-                    background-color: #f5f5f7;
+                    font-family: 'Arial', sans-serif;
+                    background-color: #f0f4f8;
                     color: #333;
                     margin: 0;
                     padding: 20px;
                 }
                 h1 {
                     color: #007aff;
+                    text-align: center;
                 }
                 a {
                     color: #007aff;
@@ -49,17 +50,31 @@ def index():
                 ul {
                     list-style-type: none;
                     padding: 0;
+                    max-width: 600px;
+                    margin: 0 auto;
                 }
                 li {
                     margin: 10px 0;
+                    padding: 10px;
+                    background-color: #ffffff;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    transition: background-color 0.3s;
+                }
+                li:hover {
+                    background-color: #f9f9f9;
                 }
                 .button {
+                    display: inline-block;
                     background-color: #007aff;
                     color: white;
                     padding: 10px 15px;
                     border: none;
                     border-radius: 5px;
                     cursor: pointer;
+                    text-align: center;
+                    text-decoration: none;
+                    margin: 10px 0;
                 }
                 .button:hover {
                     background-color: #0051a8;
@@ -111,28 +126,38 @@ def create_event():
             <title>Neues Event erstellen</title>
             <style>
                 body {
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-                    background-color: #f5f5f7;
+                    font-family: 'Arial', sans-serif;
+                    background-color: #f0f4f8;
                     color: #333;
                     margin: 0;
                     padding: 20px;
                 }
                 h1 {
                     color: #007aff;
+                    text-align: center;
                 }
                 .button {
+                    display: inline-block;
                     background-color: #007aff;
                     color: white;
                     padding: 10px 15px;
                     border: none;
                     border-radius: 5px;
                     cursor: pointer;
+                    text-align: center;
+                    text-decoration: none;
+                    margin: 10px 0;
                 }
                 .button:hover {
                     background-color: #0051a8;
                 }
                 form {
-                    margin-top: 20px;
+                    max-width: 600px;
+                    margin: 0 auto;
+                    background-color: #ffffff;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
                 }
                 label {
                     display: block;
@@ -143,6 +168,7 @@ def create_event():
                     padding: 10px;
                     border: 1px solid #ccc;
                     border-radius: 5px;
+                    margin-bottom: 10px;
                 }
             </style>
         </head>
@@ -180,25 +206,30 @@ def view_event(event_id):
             <title>{{ event.name }}</title>
             <style>
                 body {
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-                    background-color: #f5f5f7;
+                    font-family: 'Arial', sans-serif;
+                    background-color: #f0f4f8;
                     color: #333;
                     margin: 0;
                     padding: 20px;
                 }
                 h1 {
                     color: #007aff;
+                    text-align: center;
                 }
                 h2 {
                     color: #333;
                 }
                 .button {
+                    display: inline-block;
                     background-color: #007aff;
                     color: white;
                     padding: 10px 15px;
                     border: none;
                     border-radius: 5px;
                     cursor: pointer;
+                    text-align: center;
+                    text-decoration: none;
+                    margin: 10px 0;
                 }
                 .button:hover {
                     background-color: #0051a8;
@@ -206,6 +237,8 @@ def view_event(event_id):
                 ul {
                     list-style-type: none;
                     padding: 0;
+                    max-width: 600px;
+                    margin: 0 auto;
                 }
                 li {
                     margin: 10px 0;
@@ -214,6 +247,7 @@ def view_event(event_id):
                     padding: 10px;
                     border: 1px solid #ccc;
                     border-radius: 5px;
+                    margin-bottom: 10px;
                 }
             </style>
         </head>
