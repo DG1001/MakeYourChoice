@@ -139,7 +139,7 @@ def create_event():
         }
         events[event_counter] = event
         save_events()  # Speichere die Events in der JSON-Datei
-        event_counter += 1
+        event_counter += 1  # Aktualisiere den event_counter nach dem Hinzufügen des Events
         return redirect(url_for('view_event', event_id=event['id']))
     
     # GET: Zeige das Formular zum Erstellen eines neuen Events
