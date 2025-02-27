@@ -14,7 +14,8 @@ def load_events():
     if os.path.exists(data_file):
         with open(data_file, 'r') as f:
             events = json.load(f)
-            event_counter = max(events.keys()) + 1 if events else 1
+            # Umwandlung der Schlüssel in Ganzzahlen
+            event_counter = max(map(int, events.keys())) + 1 if events else 1
 
 def save_events():
     with open(data_file, 'w') as f:
